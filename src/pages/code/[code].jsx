@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import Layout from '../../components/Layout';
+import Layout from '../../app/components/Layout';
 import { formatIST } from '../../lib/formatTime';
 
 
