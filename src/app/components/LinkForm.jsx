@@ -62,12 +62,14 @@ export default function LinkForm({ onAdd }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow mb-6">
-      <div className="mb-4">
-        <label className="block font-semibold mb-1">Long URL</label>
+    <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl mb-6 max-w-lg mx-auto border border-gray-200">
+      <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">Create a Short Link</h2>
+
+      <div className="mb-5">
+        <label className="block font-semibold mb-2 text-gray-700">Long URL</label>
         <input
           type="url"
-          className="w-full border rounded p-2"
+          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
           placeholder="https://example.com/long-url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
@@ -75,27 +77,30 @@ export default function LinkForm({ onAdd }) {
           required
         />
       </div>
-      <div className="mb-4">
-        <label className="block font-semibold mb-1">Custom Code (optional)</label>
+
+      <div className="mb-5">
+        <label className="block font-semibold mb-2 text-gray-700">Custom Code (optional)</label>
         <input
           type="text"
-          className="w-full border rounded p-2"
+          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-blue-400 transition"
           placeholder="6-8 letters or numbers"
           value={code}
           onChange={(e) => setCode(e.target.value)}
           disabled={loading}
-          maxLength={8}
+          maxLength={30}
         />
       </div>
+
       <button
         type="submit"
         disabled={loading}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+        className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white font-semibold px-6 py-3 rounded-xl hover:from-blue-600 hover:to-indigo-600 shadow-lg transition disabled:opacity-50"
       >
         {loading ? 'Saving...' : 'Create Short Link'}
       </button>
-      {error && <p className="mt-2 text-red-600">{error}</p>}
-      {success && <p className="mt-2 text-green-600">{success}</p>}
+
+      {error && <p className="mt-4 text-center text-red-600 font-medium">{error}</p>}
+      {success && <p className="mt-4 text-center text-green-600 font-medium">{success}</p>}
     </form>
   );
 }
